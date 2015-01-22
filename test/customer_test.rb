@@ -1,7 +1,7 @@
 require 'minitest/autorun'
-require 'minitest/pride'
+# require 'minitest/pride'
 require_relative '../lib/customer'
-# require 'csv'
+
 
 class CustomerTest < MiniTest::Test
 
@@ -31,27 +31,3 @@ class CustomerTest < MiniTest::Test
   end
 
 end
-#
-# Josh's Advice
-# class Parser < MiniTest::Test
-#   def test_it_parses_stuff
-#     rows = Parser.parse(some_csv)
-#     # [{first_name: "Bob"}, {first_name: "Josh"}]
-#     person = rows.first
-#     assert_equal "Bob", person[:first_name]
-#   end
-# end
-#
-# class IntegrationTest < MiniTest::Test
-#   def test_it_parses_a_csv_and_creates_a_customer
-#     rows = Parser.parse(some_csv)
-#     customers = Integrator.new(rows).customers
-#
-#     # rows.map do |person|
-#     #   Customer.new(person[:first_name])
-#     # end
-#     assert customers.map do |customer|
-#       customer.first_name
-#     end.include?("Bob")
-#   end
-# end
