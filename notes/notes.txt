@@ -6,3 +6,13 @@ customer_repo:
 # find_all_by_X(match) works just like find_by_X except it returns a collection of all matches. If there is no match, it returns an empty Array
 
 #we need an invoice method that returns an instance of Invoice associated with customer object.
+
+
+select
+group_by
+reject
+reduce
+
+
+reference_to_me = self
+  then pass reference_to_me as argument when creating new instances
