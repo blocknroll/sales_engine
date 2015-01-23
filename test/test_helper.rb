@@ -16,4 +16,5 @@ require_relative '../lib/invoice_repository'
 require_relative '../lib/invoice_parser'
 
 require_relative '../lib/transaction'
+require_relative '../lib/transaction_repository'
 
