@@ -16,6 +16,4 @@ class CustomerParser
       ) }
   end
 
-
-
 end
