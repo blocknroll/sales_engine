@@ -2,19 +2,6 @@ require_relative 'test_helper'
 
 class InvoiceTest < Minitest::Test
 
-# 1,1,26,shipped,2012-03-25 09:54:09 UTC,2012-03-25 09:54:09 UTC
-# id,customer_id,merchant_id,status,created_at,updated_at
-
-# My original:
-  # def setup
-  #   @invoice = Invoice.new(
-  #     :id => 1,
-  #     :customer_id => 1,
-  #     :merchant_id => 26,
-  #     :status => "shipped"
-  #     )
-  # end
-
   def setup
     data = {:id => 1,
       :customer_id => 1,
