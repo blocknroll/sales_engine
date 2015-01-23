@@ -16,10 +16,8 @@ class CustomerRepositoryTest < Minitest::Test
     assert @customer_repo
   end
 
-  #test to see if the file_to_read actually exists. The file to read is the one we pass in.
-
   def test_the_file_to_read_exists
-    assert File.exist?(@customer_repo.file_to_read)
+    assert File.exist?(@customer_repo.file)
   end
 
   #you could test that the customer list is full of customers - customer_repo.customer_list.first.class (the class of the first thing in it is a customer - it fills with customers not just items.)
