@@ -10,3 +10,6 @@ require_relative '../lib/customer_parser'
 require_relative '../lib/merchant'
 require_relative '../lib/merchant_repository'
 require_relative '../lib/merchant_parser'
+
+require_relative '../lib/invoice'
+
