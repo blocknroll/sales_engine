@@ -16,3 +16,6 @@ reduce
 
 reference_to_me = self
   then pass reference_to_me as argument when creating new instances
+
+
+Hey Mr MerchantRepository, what is your merchant_list?
