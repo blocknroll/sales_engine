@@ -15,15 +15,31 @@ class ItemRepository
     all.sample
   end
 
+  def find_by_id(id)
+    match = all.detect { |e| e.id == id }
+    match.nil? ? "No match, try again." : "#{match.name}"
+  end
+
   def find_by_name(name)
     match = all.detect { |e| e.name.downcase ==  name.downcase }
     match.nil? ? "No match, try again." : "#{match.name}"
   end
 
-  def find_by_id(id)
-    match = all.detect { |e| e.id == id }
+  def find_by_description(description)
+    match = all.detect { |e| e.description.downcase == description.downcase}
     match.nil? ? "No match, try again." : "#{match.name}"
   end
+
+  def find_by_unit_price(price)
+    match = all.detect { |e| e.unit_price == price}
+    match.nil? ? "No match, try again." : "#{match.name}"
+  end
+
+
+
+
+
+
 
   def find_all_by_name(name)
     matches = all.select { |e| e.name.downcase == name.downcase}
@@ -33,5 +49,6 @@ class ItemRepository
     # with name "Item Qui Esse". how can you do that?
     # it's an array, so if you match[0].name, you should get the first name.
   end
+
 
 end

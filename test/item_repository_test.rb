@@ -30,6 +30,10 @@ class ItemRepositoryTest < Minitest::Test
     #create an empty array and shovel in 100 samples from the item repo (you are grabbing 100 samples from all the items that are located in the item repo). Then run uniq on the sample array, and it will pull out all the values that are duplicates. probably you will have 10 in there, very likely you'll have 9, but it is almost certain that you will have more than 1. So that is how you can test if it is returning a random instance.
   end
 
+  def test_it_returns_a_find_by_id_match
+    assert_equal "Item Qui Esse", @item_repo.find_by_id("1")
+  end
+
   def test_it_returns_a_find_by_name_match
     assert_equal "Item Qui Esse", @item_repo.find_by_name("Item Qui Esse")
   end
@@ -38,9 +42,18 @@ class ItemRepositoryTest < Minitest::Test
     assert_equal "Item Qui Esse", @item_repo.find_by_name("item qui esse")
   end
 
-  def test_it_returns_a_find_by_id_match
-    assert_equal "Item Qui Esse", @item_repo.find_by_id("1")
+  def test_it_returns_a_find_by_description_match
+    assert_equal "Item Qui Esse", @item_repo.find_by_description("Nihil autem sit odio inventore deleniti. Est laudantium ratione distinctio laborum. Minus voluptatem nesciunt assumenda dicta voluptatum porro.")
   end
+
+  def test_it_returns_a_find_by_unit_price_match
+    assert_equal "Item Qui Esse", @item_repo.find_by_unit_price("75107")
+  end
+
+
+
+
+
 
   def test_it_returns_a_find_all_by_name_match
     assert_equal 3, @item_repo.find_all_by_name("Item Qui Esse").count
@@ -53,5 +66,7 @@ class ItemRepositoryTest < Minitest::Test
   def test_it_returns_zero_when_no_find_all_by_name_match_exists
     assert_equal 0, @item_repo.find_all_by_name("Item Qui Es").count
   end
+
+
 
 end
