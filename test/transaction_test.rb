@@ -3,16 +3,15 @@ require_relative 'test_helper'
 class TransactionTest < Minitest::Test
 
   def setup
-    data = {
-      :id => 1,
-      :invoice_id => 1, 
-      :cc_number => 4654405418249632, 
-      :cc_expir_date => nil, 
-      :result => "success",
-      :created_at => "2012-03-27 14:54:09 UTC",
-      :updated_at => "2012-03-27 14:54:09 UTC"
-    }
-    @transaction = Transaction.new(data)
+    id = 1
+    invoice_id = 1 
+    cc_number = 4654405418249632      
+    cc_expir_date = nil 
+    result = "success"
+    created_at = "2012-03-27 14:54:09 UTC" 
+    updated_at = "2012-03-27 14:54:09 UTC"
+    
+    @transaction = Transaction.new(id, invoice_id, cc_number, cc_expir_date, result, created_at, updated_at)
   end
 
   def test_it_exists
