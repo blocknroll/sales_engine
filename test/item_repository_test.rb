@@ -19,7 +19,7 @@ class ItemRepositoryTest < Minitest::Test
   #you could test that the item list is full of items - item_repo.item_list.first.class (the class of the first thing in it is an item - it fills with items.)
 
   def test_it_returns_all_instances
-    assert_equal 10, @item_repo.all.count
+    assert_equal 100, @item_repo.all.count
   end
 
   def test_it_returns_a_random_instance
@@ -62,10 +62,22 @@ class ItemRepositoryTest < Minitest::Test
     assert_equal "2012-03-27 14:53:59 UTC", @item_repo.find_by_updated_at("2012-03-27 14:53:59 UTC")
   end
 
+  # find_all_by_
 
+  def test_it_returns_a_find_all_by_id_match
+    assert_equal 1, @item_repo.find_all_by_id("1").count
+    assert_equal 1, @item_repo.find_all_by_id("2").count
+  end
 
+  def test_it_returns_an_empty_array_when_no_find_all_by_id_match_exists
+    assert_equal [], @item_repo.find_all_by_id("0")
+    assert_equal [], @item_repo.find_all_by_id(" ")
+  end
 
-
+  def test_it_returns_zero_when_no_find_all_by_id_match_exists
+    assert_equal 0, @item_repo.find_all_by_id("0").count
+    assert_equal 0, @item_repo.find_all_by_id(" ").count
+  end
 
   def test_it_returns_a_find_all_by_name_match
     assert_equal 3, @item_repo.find_all_by_name("Item Qui Esse").count

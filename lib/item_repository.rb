@@ -50,11 +50,12 @@ class ItemRepository
     match.nil? ? "No match, try again." : "#{match.updated_at}"
   end
 
+  # find_all_by_
 
-
-
-
-
+  def find_all_by_id(id)
+    matches = all.select { |e| e.id == id }
+    matches.nil? ? [] : matches
+  end
 
   def find_all_by_name(name)
     matches = all.select { |e| e.name.downcase == name.downcase}
@@ -64,6 +65,8 @@ class ItemRepository
     # with name "Item Qui Esse". how can you do that?
     # it's an array, so if you match[0].name, you should get the first name.
   end
+
+  
 
 
 end
