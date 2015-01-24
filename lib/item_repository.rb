@@ -81,6 +81,11 @@ class ItemRepository
     matches.nil? ? [] : matches
   end
 
+  def find_all_by_created_at(created_at)
+    matches = all.select { |e| e.created_at == created_at }
+    matches.nil? ? [] : matches
+  end
+
 
 
 

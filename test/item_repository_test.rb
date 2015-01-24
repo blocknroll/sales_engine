@@ -147,6 +147,25 @@ class ItemRepositoryTest < Minitest::Test
     assert_equal 0, @item_repo.find_all_by_merchant_id(" ").count
   end
 
+  # find_all_by_created_at
+
+  def test_it_returns_a_find_all_by_created_at_match
+    assert_equal 100, @item_repo.find_all_by_created_at("2012-03-27 14:53:59 UTC").count
+    # assert_equal 9, @item_repo.find_all_by_created_at("5").count
+  end
+
+  def test_it_returns_an_empty_array_when_no_find_all_by_created_at_match_exists
+    assert_equal [], @item_repo.find_all_by_created_at("1999")
+    assert_equal [], @item_repo.find_all_by_created_at(" ")
+  end
+
+  def test_it_returns_zero_when_no_find_all_by_created_at_match_exists
+    assert_equal 0, @item_repo.find_all_by_created_at("1999").count
+    assert_equal 0, @item_repo.find_all_by_created_at(" ").count
+  end
+
+  
+
 
 
 end
