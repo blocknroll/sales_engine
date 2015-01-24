@@ -27,12 +27,22 @@ class ItemRepository
 
   def find_by_description(description)
     match = all.detect { |e| e.description.downcase == description.downcase}
-    match.nil? ? "No match, try again." : "#{match.name}"
+    match.nil? ? "No match, try again." : "#{match.description}"
   end
 
   def find_by_unit_price(price)
     match = all.detect { |e| e.unit_price == price}
-    match.nil? ? "No match, try again." : "#{match.name}"
+    match.nil? ? "No match, try again." : "#{match.unit_price}"
+  end
+
+  def find_by_merchant_id(id)
+    match = all.detect { |e| e.merchant_id == id}
+    match.nil? ? "No match, try again." : "#{match.merchant_id}"
+  end
+
+  def find_by_created_at(time)
+    match = all.detect { |e| e.created_at == time}
+    match.nil? ? "No match, try again." : "#{match.created_at}"
   end
 
 

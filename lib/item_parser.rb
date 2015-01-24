@@ -13,7 +13,9 @@ class ItemParser
       row[:name],
       row[:description],
       row[:unit_price],
-      row[:merchant_id]
+      row[:merchant_id],
+      row[:created_at],
+      row[:updated_at]
       ) }
     end
 

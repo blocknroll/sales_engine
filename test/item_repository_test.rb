@@ -43,11 +43,19 @@ class ItemRepositoryTest < Minitest::Test
   end
 
   def test_it_returns_a_find_by_description_match
-    assert_equal "Item Qui Esse", @item_repo.find_by_description("Nihil autem sit odio inventore deleniti. Est laudantium ratione distinctio laborum. Minus voluptatem nesciunt assumenda dicta voluptatum porro.")
+    assert_equal "Nihil autem sit odio inventore deleniti. Est laudantium ratione distinctio laborum. Minus voluptatem nesciunt assumenda dicta voluptatum porro.", @item_repo.find_by_description("Nihil autem sit odio inventore deleniti. Est laudantium ratione distinctio laborum. Minus voluptatem nesciunt assumenda dicta voluptatum porro.")
   end
 
   def test_it_returns_a_find_by_unit_price_match
-    assert_equal "Item Qui Esse", @item_repo.find_by_unit_price("75107")
+    assert_equal "75107", @item_repo.find_by_unit_price("75107")
+  end
+
+  def test_it_returns_a_find_by_merchant_id_match
+    assert_equal "1", @item_repo.find_by_merchant_id("1")
+  end
+
+  def test_it_returns_a_find_by_created_at_match
+    assert_equal "2012-03-27 14:53:59 UTC", @item_repo.find_by_created_at("2012-03-27 14:53:59 UTC")
   end
 
 
