@@ -26,28 +26,23 @@ class InvoiceRepositoryTest < Minitest::Test
   end
 
   def test_it_returns_a_find_by_id_match
-    assert_equal "Invoice ID: 1, Customer ID: 1, Merchant ID: 26", @invoice_repo.find_by_id("1")
+    assert_equal "1", @invoice_repo.find_by_id("1").id
   end
-# 1,1,26,shipped
 
   def test_it_returns_a_find_by_customer_id_match
-    assert_equal "Customer ID: 1, Invoice ID: 1, Merchant ID: 26", @invoice_repo.find_by_customer_id("1")
+    assert_equal "1", @invoice_repo.find_by_customer_id("1").customer_id
   end
 
   def test_it_returns_a_find_by_merchant_id_match
-    assert_equal "Merchant ID: 26, Customer ID: 1, Invoice ID: 1", @invoice_repo.find_by_merchant_id("26")
+    assert_equal "26", @invoice_repo.find_by_merchant_id("26").merchant_id
   end
 
   def test_it_returns_a_find_by_status_match
-     assert_equal "Status: shipped, Invoice ID: 1, Customer ID: 1, Merchant ID: 26", @invoice_repo.find_by_status("shipped")
-  end
-
-  def test_it_returns_a_find_all_by_id_match
-    # Does this make sense to run? Shouldnt they be unique?
+     assert_equal "shipped", @invoice_repo.find_by_status("shipped").status
   end
 
   def test_it_returns_a_find_all_by_customer_id_match
-    # Does this make sense to run? Shouldnt they be unique?
+    assert_equal 8, @invoice_repo.find_all_by_customer_id("1").count
   end
 
   def test_it_returns_a_find_all_by_merchant_id_match

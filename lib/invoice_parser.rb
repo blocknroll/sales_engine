@@ -3,8 +3,8 @@ require_relative 'invoice'
 
 class InvoiceParser
 
-  def make_invoices(invoice_file)
-    contents = CSV.open(invoice_file, headers: true, header_converters: :symbol)
+  def make_invoices(file)
+    contents = CSV.open(file, headers: true, header_converters: :symbol)
     parse(contents)
   end
 
@@ -14,7 +14,9 @@ class InvoiceParser
       :id => row[:id],
       :customer_id => row[:customer_id],
       :merchant_id => row[:merchant_id],
-      :status => row[:status]
+      :status => row[:status],
+      :created_at => row[:created_at],
+      :updated_at => row[:updated_at]
       })}
   end
 
