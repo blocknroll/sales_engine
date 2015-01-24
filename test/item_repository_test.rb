@@ -31,7 +31,7 @@ class ItemRepositoryTest < Minitest::Test
   end
 
   def test_it_returns_a_find_by_id_match
-    assert_equal "Item Qui Esse", @item_repo.find_by_id("1")
+    assert_equal "1", @item_repo.find_by_id("1")
   end
 
   def test_it_returns_a_find_by_name_match

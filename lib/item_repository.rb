@@ -17,7 +17,7 @@ class ItemRepository
 
   def find_by_id(id)
     match = all.detect { |e| e.id == id }
-    match.nil? ? "No match, try again." : "#{match.name}"
+    match.nil? ? "No match, try again." : "#{match.id}"
   end
 
   def find_by_name(name)
