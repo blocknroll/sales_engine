@@ -113,6 +113,23 @@ class ItemRepositoryTest < Minitest::Test
     assert_equal 0, @item_repo.find_all_by_description(" ").count
   end
 
+  # find_all_by_unit_price
+
+  def test_it_returns_a_find_all_by_unit_price_match
+    assert_equal 1, @item_repo.find_all_by_unit_price("75107").count
+    assert_equal 3, @item_repo.find_all_by_unit_price("58238").count
+  end
+
+  def test_it_returns_an_empty_array_when_no_find_all_by_unit_price_match_exists
+    assert_equal [], @item_repo.find_all_by_unit_price("55555")
+    assert_equal [], @item_repo.find_all_by_unit_price(" ")
+  end
+
+  def test_it_returns_zero_when_no_find_all_by_description_match_exists
+    assert_equal 0, @item_repo.find_all_by_description("55555").count
+    assert_equal 0, @item_repo.find_all_by_description(" ").count
+  end
+
 
 
 end
