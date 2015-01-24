@@ -28,6 +28,10 @@ class MerchantRepositoryTest < Minitest::Test
     #create an empty array and shovel in 100 samples from the merchant repo (you are grabbing 100 samples from all the merchants that are located in the merchant repo). Then run uniq on the sample array, and it will pull out all the values that are duplicates. probably you will have 10 in there, very likely you'll have 9, but it is almost certain that you will have more than 1. So that is how you can test if it is returning a random instance.
   end
 
+  def test_it_returns_a_find_by_id_match
+    assert_equal "1", @merchant_repo.find_by_id("1")
+  end
+
   def test_it_returns_a_find_by_name_match
     assert_equal "Schroeder-Jerde", @merchant_repo.find_by_name("Schroeder-Jerde")
   end
@@ -36,27 +40,63 @@ class MerchantRepositoryTest < Minitest::Test
     assert_equal "Schroeder-Jerde", @merchant_repo.find_by_name("schroeder-jerde")
   end
 
-  def test_it_returns_a_find_by_id_match
-    assert_equal "Schroeder-Jerde", @merchant_repo.find_by_id("1")
+  def test_it_returns_a_find_by_created_at_match
+    assert_equal "2012-03-27 14:53:59 UTC", @merchant_repo.find_by_created_at("2012-03-27 14:53:59 UTC")
   end
+
+  def test_it_returns_a_find_by_updated_at_match
+    assert_equal "2012-03-27 14:53:59 UTC", @merchant_repo.find_by_updated_at("2012-03-27 14:53:59 UTC")
+  end
+
+  # find_all_by_id
+
+  def test_it_returns_a_find_all_by_id_match
+    assert_equal 1, @merchant_repo.find_all_by_id("1").count
+    assert_equal 1, @merchant_repo.find_all_by_id("9").count
+  end
+
+  def test_it_returns_an_empty_array_when_no_find_all_by_id_match_exists
+    assert_equal [], @merchant_repo.find_all_by_id("Schroeder-Jorge")
+    assert_equal [], @merchant_repo.find_all_by_id(" ")
+  end
+
+  def test_it_returns_zero_when_no_find_all_by_id_match_exists
+    assert_equal 0, @merchant_repo.find_all_by_id("Schroeder-Jorge").count
+    assert_equal 0, @merchant_repo.find_all_by_id(" ").count
+  end
+
+  # find_all_by_name
 
   def test_it_returns_a_find_all_by_name_match
     assert_equal 3, @merchant_repo.find_all_by_name("Williamson Group").count
+    assert_equal 1, @merchant_repo.find_all_by_name("Hand-Spencer").count
   end
 
   def test_it_returns_an_empty_array_when_no_find_all_by_name_match_exists
-    assert_equal [], @merchant_repo.find_all_by_name("Schroeder-Gerde")
+    assert_equal [], @merchant_repo.find_all_by_name("Schroeder-Jorge")
+    assert_equal [], @merchant_repo.find_all_by_name(" ")
   end
 
   def test_it_returns_zero_when_no_find_all_by_name_match_exists
-    assert_equal 0, @merchant_repo.find_all_by_name("Schroeder-Gerde").count
+    assert_equal 0, @merchant_repo.find_all_by_name("Schroeder-Jorge").count
+    assert_equal 0, @merchant_repo.find_all_by_name(" ").count
+  end
+
+  # find_all_by_created_at
+
+  def test_it_returns_a_find_all_by_created_at_match
+    assert_equal 9, @merchant_repo.find_all_by_created_at("2012-03-27 14:53:59 UTC").count
+    assert_equal 1, @merchant_repo.find_all_by_created_at("2014-03-27 14:54:00 UTC").count
+  end
+
+  def test_it_returns_an_empty_array_when_no_find_all_by_created_at_match_exists
+    assert_equal [], @merchant_repo.find_all_by_created_at("1999")
+    assert_equal [], @merchant_repo.find_all_by_created_at(" ")
+  end
+
+  def test_it_returns_zero_when_no_find_all_by_created_at_match_exists
+    assert_equal 0, @merchant_repo.find_all_by_created_at("1999").count
+    assert_equal 0, @merchant_repo.find_all_by_created_at(" ").count
   end
 
 end
-
-
-
-  # def test_it_adds_all_merchants_to_repo
-  #   skip
-  #   assert 10, @merchant_repo.merchant_list.count
-  # end

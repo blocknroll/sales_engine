@@ -13,14 +13,31 @@ class MerchantRepository
     all.sample
   end
 
+  def find_by_id(id)
+    match = all.detect { |e| e.id == id }
+    match.nil? ? "No match, try again." : "#{match.id}"
+  end
+
   def find_by_name(name)
     match = all.detect { |e| e.name.downcase ==  name.downcase }
     match.nil? ? "No match, try again." : "#{match.name}"
   end
 
-  def find_by_id(id)
-    match = all.detect { |e| e.id == id }
-    match.nil? ? "No match, try again." : "#{match.name}"
+  def find_by_created_at(time)
+    match = all.detect { |e| e.created_at == time}
+    match.nil? ? "No match, try again." : "#{match.created_at}"
+  end
+
+  def find_by_updated_at(time)
+    match = all.detect { |e| e.updated_at == time}
+    match.nil? ? "No match, try again." : "#{match.updated_at}"
+  end
+
+  # find_all_by_
+
+  def find_all_by_id(id)
+    matches = all.select { |e| e.id == id }
+    matches.nil? ? [] : matches
   end
 
   def find_all_by_name(name)
@@ -31,5 +48,11 @@ class MerchantRepository
     # with name "Williamson Group". how can you do that?
     # it's an array, so if you match[0].name, you should get the first name.
   end
+
+  def find_all_by_created_at(created_at)
+    matches = all.select { |e| e.created_at == created_at }
+    matches.nil? ? [] : matches
+  end
+
 
 end
