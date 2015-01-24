@@ -134,7 +134,7 @@ class ItemRepositoryTest < Minitest::Test
 
   def test_it_returns_a_find_all_by_merchant_id_match
     assert_equal 15, @item_repo.find_all_by_merchant_id("1").count
-    assert_equal 9, @item_repo.find_all_by_merchant_id("5").count
+    assert_equal  9, @item_repo.find_all_by_merchant_id("5").count
   end
 
   def test_it_returns_an_empty_array_when_no_find_all_by_merchant_id_match_exists
@@ -150,8 +150,8 @@ class ItemRepositoryTest < Minitest::Test
   # find_all_by_created_at
 
   def test_it_returns_a_find_all_by_created_at_match
-    assert_equal 100, @item_repo.find_all_by_created_at("2012-03-27 14:53:59 UTC").count
-    # assert_equal 9, @item_repo.find_all_by_created_at("5").count
+    assert_equal 99, @item_repo.find_all_by_created_at("2012-03-27 14:53:59 UTC").count
+    assert_equal  1, @item_repo.find_all_by_created_at("2014-03-27 14:53:59 UTC").count
   end
 
   def test_it_returns_an_empty_array_when_no_find_all_by_created_at_match_exists
@@ -164,8 +164,21 @@ class ItemRepositoryTest < Minitest::Test
     assert_equal 0, @item_repo.find_all_by_created_at(" ").count
   end
 
-  
+  # find_all_by_updated_at
 
+  def test_it_returns_a_find_all_by_updated_at_match
+    assert_equal 99, @item_repo.find_all_by_updated_at("2012-03-27 14:53:59 UTC").count
+    assert_equal  1, @item_repo.find_all_by_updated_at("2014-03-27 14:53:59 UTC").count
+  end
 
+  def test_it_returns_an_empty_array_when_no_find_all_by_updated_at_match_exists
+    assert_equal [], @item_repo.find_all_by_updated_at("1999")
+    assert_equal [], @item_repo.find_all_by_updated_at(" ")
+  end
+
+  def test_it_returns_zero_when_no_find_all_by_updated_at_match_exists
+    assert_equal 0, @item_repo.find_all_by_updated_at("1999").count
+    assert_equal 0, @item_repo.find_all_by_updated_at(" ").count
+  end
 
 end

@@ -86,7 +86,9 @@ class ItemRepository
     matches.nil? ? [] : matches
   end
 
-
-
+  def find_all_by_updated_at(updated_at)
+    matches = all.select { |e| e.updated_at == updated_at }
+    matches.nil? ? [] : matches
+  end
 
 end
