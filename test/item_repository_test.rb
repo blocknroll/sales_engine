@@ -62,7 +62,7 @@ class ItemRepositoryTest < Minitest::Test
     assert_equal "2012-03-27 14:53:59 UTC", @item_repo.find_by_updated_at("2012-03-27 14:53:59 UTC")
   end
 
-  # find_all_by_
+  # find_all_by_id
 
   def test_it_returns_a_find_all_by_id_match
     assert_equal 1, @item_repo.find_all_by_id("1").count
@@ -79,16 +79,38 @@ class ItemRepositoryTest < Minitest::Test
     assert_equal 0, @item_repo.find_all_by_id(" ").count
   end
 
+  # find_all_by_name
+
   def test_it_returns_a_find_all_by_name_match
     assert_equal 3, @item_repo.find_all_by_name("Item Qui Esse").count
+    assert_equal 1, @item_repo.find_all_by_name("Item Nemo Facere").count
   end
 
   def test_it_returns_an_empty_array_when_no_find_all_by_name_match_exists
     assert_equal [], @item_repo.find_all_by_name("Item Qui Es")
+    assert_equal [], @item_repo.find_all_by_name(" ")
   end
 
   def test_it_returns_zero_when_no_find_all_by_name_match_exists
     assert_equal 0, @item_repo.find_all_by_name("Item Qui Es").count
+    assert_equal 0, @item_repo.find_all_by_name(" ").count
+  end
+
+  # find_all_by_description
+
+  def test_it_returns_a_find_all_by_description_match
+    assert_equal 1, @item_repo.find_all_by_description("Nihil autem sit odio inventore deleniti. Est laudantium ratione distinctio laborum. Minus voluptatem nesciunt assumenda dicta voluptatum porro.").count
+    assert_equal 2, @item_repo.find_all_by_description("cool thing").count
+  end
+
+  def test_it_returns_an_empty_array_when_no_find_all_by_description_match_exists
+    assert_equal [], @item_repo.find_all_by_description("super cool thing")
+    assert_equal [], @item_repo.find_all_by_description(" ")
+  end
+
+  def test_it_returns_zero_when_no_find_all_by_description_match_exists
+    assert_equal 0, @item_repo.find_all_by_description("super cool thing").count
+    assert_equal 0, @item_repo.find_all_by_description(" ").count
   end
 
 

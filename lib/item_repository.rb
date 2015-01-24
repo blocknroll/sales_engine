@@ -66,7 +66,12 @@ class ItemRepository
     # it's an array, so if you match[0].name, you should get the first name.
   end
 
-  
+  def find_all_by_description(description)
+    matches = all.select { |e| e.description == description }
+    matches.nil? ? [] : matches
+  end
+
+
 
 
 end
