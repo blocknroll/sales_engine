@@ -125,9 +125,26 @@ class ItemRepositoryTest < Minitest::Test
     assert_equal [], @item_repo.find_all_by_unit_price(" ")
   end
 
-  def test_it_returns_zero_when_no_find_all_by_description_match_exists
-    assert_equal 0, @item_repo.find_all_by_description("55555").count
-    assert_equal 0, @item_repo.find_all_by_description(" ").count
+  def test_it_returns_zero_when_no_find_all_by_unit_price_match_exists
+    assert_equal 0, @item_repo.find_all_by_unit_price("55555").count
+    assert_equal 0, @item_repo.find_all_by_unit_price(" ").count
+  end
+
+  # find_all_by_merchant_id
+
+  def test_it_returns_a_find_all_by_merchant_id_match
+    assert_equal 15, @item_repo.find_all_by_merchant_id("1").count
+    assert_equal 9, @item_repo.find_all_by_merchant_id("5").count
+  end
+
+  def test_it_returns_an_empty_array_when_no_find_all_by_merchant_id_match_exists
+    assert_equal [], @item_repo.find_all_by_merchant_id("55555")
+    assert_equal [], @item_repo.find_all_by_merchant_id(" ")
+  end
+
+  def test_it_returns_zero_when_no_find_all_by_merchant_id_match_exists
+    assert_equal 0, @item_repo.find_all_by_merchant_id("55555").count
+    assert_equal 0, @item_repo.find_all_by_merchant_id(" ").count
   end
 
 

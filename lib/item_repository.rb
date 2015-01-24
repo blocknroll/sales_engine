@@ -76,6 +76,11 @@ class ItemRepository
     matches.nil? ? [] : matches
   end
 
+  def find_all_by_merchant_id(merchant_id)
+    matches = all.select { |e| e.merchant_id == merchant_id }
+    matches.nil? ? [] : matches
+  end
+
 
 
 
