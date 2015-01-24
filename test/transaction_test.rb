@@ -8,7 +8,9 @@ class TransactionTest < Minitest::Test
       :invoice_id => 1, 
       :cc_number => 4654405418249632, 
       :cc_expir_date => nil, 
-      :result => "success"
+      :result => "success",
+      :created_at => "2012-03-27 14:54:09 UTC",
+      :updated_at => "2012-03-27 14:54:09 UTC"
     }
     @transaction = Transaction.new(data)
   end
