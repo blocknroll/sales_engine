@@ -99,4 +99,21 @@ class MerchantRepositoryTest < Minitest::Test
     assert_equal 0, @merchant_repo.find_all_by_created_at(" ").count
   end
 
+  # find_all_by_updated_at
+
+  def test_it_returns_a_find_all_by_updated_at_match
+    assert_equal 8, @merchant_repo.find_all_by_updated_at("2012-03-27 14:53:59 UTC").count
+    assert_equal 1, @merchant_repo.find_all_by_updated_at("2014-03-27 14:54:00 UTC").count
+  end
+
+  def test_it_returns_an_empty_array_when_no_find_all_by_updated_at_match_exists
+    assert_equal [], @merchant_repo.find_all_by_updated_at("1999")
+    assert_equal [], @merchant_repo.find_all_by_updated_at(" ")
+  end
+
+  def test_it_returns_zero_when_no_find_all_by_updated_at_match_exists
+    assert_equal 0, @merchant_repo.find_all_by_updated_at("1999").count
+    assert_equal 0, @merchant_repo.find_all_by_updated_at(" ").count
+  end
+
 end
