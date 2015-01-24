@@ -45,6 +45,11 @@ class ItemRepository
     match.nil? ? "No match, try again." : "#{match.created_at}"
   end
 
+  def find_by_updated_at(time)
+    match = all.detect { |e| e.updated_at == time}
+    match.nil? ? "No match, try again." : "#{match.updated_at}"
+  end
+
 
 
 

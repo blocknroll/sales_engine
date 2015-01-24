@@ -58,6 +58,10 @@ class ItemRepositoryTest < Minitest::Test
     assert_equal "2012-03-27 14:53:59 UTC", @item_repo.find_by_created_at("2012-03-27 14:53:59 UTC")
   end
 
+  def test_it_returns_a_find_by_updated_at_match
+    assert_equal "2012-03-27 14:53:59 UTC", @item_repo.find_by_updated_at("2012-03-27 14:53:59 UTC")
+  end
+
 
 
 
