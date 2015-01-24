@@ -17,17 +17,17 @@ class CustomerRepository
 
   def find_by_first_name(first_name)
     match = all.detect { |e| e.first_name.downcase ==  first_name.downcase }
-    match.nil? ? "No match, try again." : "#{match.first_name} #{match.last_name}"
+    match.nil? ? "No match, try again." : match
   end
 
   def find_by_last_name(last_name)
     match = all.detect { |e| e.last_name.downcase == last_name.downcase }
-    match.nil? ? "No match, try again." : "#{match.first_name} #{match.last_name}"
+    match.nil? ? "No match, try again." : match
   end
 
   def find_by_id(id)
     match = all.detect { |e| e.id == id }
-    match.nil? ? "No match, try again." : "#{match.first_name} #{match.last_name}"
+    match.nil? ? "No match, try again." : match
   end
 
   def find_all_by_first_name(first_name)

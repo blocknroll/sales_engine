@@ -3,8 +3,8 @@ require_relative 'customer'
 
 class CustomerParser
 
-  def make_customers(customer_file)
-    contents = CSV.open(customer_file, headers: true, header_converters: :symbol)
+  def make_customers(file)
+    contents = CSV.open(file, headers: true, header_converters: :symbol)
     parse(contents)
   end
 
@@ -13,7 +13,9 @@ class CustomerParser
     contents.map { |row| Customer.new(
       row[:id],
       row[:first_name],
-      row[:last_name]
+      row[:last_name],
+      row[:created_at],
+      row[:updated_at]
       ) }
   end
 

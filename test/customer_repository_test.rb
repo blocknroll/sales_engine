@@ -27,31 +27,31 @@ class CustomerRepositoryTest < Minitest::Test
   end
 
   def test_it_returns_a_random_instance
-    @test = []
-    100.times { @test << @customer_repo.random }
-    @test = @test.uniq
-    assert @test.count > 1
+    result = []
+    100.times { result << @customer_repo.random }
+    result = result.uniq
+    assert result.count > 1
     #create an empty array and shovel in 100 samples from the customer repo (you are grabbing 100 samples from all the customers that are located in the customer repo). Then run uniq on the sample array, and it will pull out all the values that are duplicates. probably you will have 10 in there, very likely you'll have 9, but it is almost certain that you will have more than 1. So that is how you can test if it is returning a random instance.
   end
 
   def test_it_returns_a_find_by_first_name_match
-    assert_equal "Joey Ondricka", @customer_repo.find_by_first_name("Joey")
+    assert_equal "Joey Ondricka", @customer_repo.find_by_first_name("Joey").full_name
   end
 
   def test_it_returns_a_find_by_first_name_lowercase_match
-    assert_equal "Joey Ondricka", @customer_repo.find_by_first_name("joey")
+    assert_equal "Joey Ondricka", @customer_repo.find_by_first_name("joey").full_name
   end
 
   def test_it_returns_a_find_by_last_name_match
-    assert_equal "Joey Ondricka", @customer_repo.find_by_last_name("Ondricka")
+    assert_equal "Joey Ondricka", @customer_repo.find_by_last_name("Ondricka").full_name
   end
 
   def test_it_returns_a_find_by_last_name_lowercase_match
-    assert_equal "Joey Ondricka", @customer_repo.find_by_last_name("ondricka")
+    assert_equal "Joey Ondricka", @customer_repo.find_by_last_name("ondricka").full_name
   end
 
   def test_it_returns_a_find_by_id_match
-    assert_equal "Joey Ondricka", @customer_repo.find_by_id("1")
+    assert_equal "Joey Ondricka", @customer_repo.find_by_id("1").full_name
   end
 
   def test_it_returns_a_find_all_by_first_name_match
