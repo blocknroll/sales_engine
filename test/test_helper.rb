@@ -25,3 +25,4 @@ require_relative '../lib/transaction_parser'
 
 require_relative '../lib/invoice_item'
 require_relative '../lib/invoice_item_repository'
+require_relative '../lib/invoice_item_parser'
