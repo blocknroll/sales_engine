@@ -5,8 +5,7 @@ class MerchantRepository
   def initialize(file)
     @file = file
     @merchant_parser = MerchantParser.new
-    #we want to use merchant_parser to open the csv file and create merchants from it.
-    @all = @merchant_parser.make_merchant(@file) #you put this in the initialize so that when you load up a merchant repo, it loads with all of the merchants inside. it populates it from the csv reference you're passing in.
+    @all = @merchant_parser.make_merchant(@file)
   end
 
   def random
@@ -54,6 +53,5 @@ class MerchantRepository
     matches = all.select { |e| e.updated_at == updated_at }
     matches.nil? ? [] : matches
   end
-
 
 end
