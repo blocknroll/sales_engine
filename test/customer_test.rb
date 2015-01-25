@@ -1,32 +1,46 @@
 require_relative 'test_helper'
-# To do: remove instance variables.
 
 class CustomerTest < MiniTest::Test
-# To do: remove instance variables.
+
+  attr_reader :customer
 
   def setup
-    @customer = Customer.new(1, "Joey", "Ondricka", "2012-03-27", "2012-03-27")
+    data = {
+      :id           => 1, 
+      :first_name   => "Joey", 
+      :last_name    => "Ondricka", 
+      :created_at   => "2012-03-27", 
+      :updated_at   => "2012-03-27"
+    }
+    @customer = Customer.new(data)
   end
 
   def test_it_exists
-    assert @customer
+    assert customer
   end
 
   def test_it_has_a_first_name
-    assert_equal "Joey", @customer.first_name
+    assert_equal "Joey", customer.first_name
   end
 
   def test_it_has_a_different_first_name
-    @customer = Customer.new(2, "Timmy", "Doe", "2012-03-27", "2012-03-27")
-    assert_equal "Timmy", @customer.first_name
+    data = {
+      :id         => 2, 
+      :first_name => "Timmy", 
+      :last_name  => "Doe", 
+      :created_at => "2012-03-27", 
+      :updated_at => "2012-03-27"
+    }
+    customer = Customer.new(data)
+    assert_equal "Timmy", customer.first_name
   end
 
   def test_it_has_a_last_name
-    assert_equal "Ondricka", @customer.last_name
+    assert_equal "Ondricka", customer.last_name
   end
 
   def test_it_has_an_id
-    assert_equal 1, @customer.id
+    assert_equal 1, customer.id
   end
 
 end
