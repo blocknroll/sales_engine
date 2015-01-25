@@ -11,7 +11,7 @@ class MerchantRepositoryTest < Minitest::Test
   end
 
   def test_the_file_to_read_exists
-    assert File.exist?(@merchant_repo.file_to_read)
+    assert File.exist?(@merchant_repo.file)
   end
 
   #you could test that the customer list is full of customers - customer_repo.customer_list.first.class (the class of the first thing in it is a customer - it fills with customers not just items.)
@@ -29,23 +29,23 @@ class MerchantRepositoryTest < Minitest::Test
   end
 
   def test_it_returns_a_find_by_id_match
-    assert_equal "1", @merchant_repo.find_by_id("1")
+    assert_equal "1", @merchant_repo.find_by_id("1").id
   end
 
   def test_it_returns_a_find_by_name_match
-    assert_equal "Schroeder-Jerde", @merchant_repo.find_by_name("Schroeder-Jerde")
+    assert_equal "Schroeder-Jerde", @merchant_repo.find_by_name("Schroeder-Jerde").name
   end
 
   def test_it_returns_a_find_by_name_lowercase_match
-    assert_equal "Schroeder-Jerde", @merchant_repo.find_by_name("schroeder-jerde")
+    assert_equal "Schroeder-Jerde", @merchant_repo.find_by_name("schroeder-jerde").name
   end
 
   def test_it_returns_a_find_by_created_at_match
-    assert_equal "2012-03-27 14:53:59 UTC", @merchant_repo.find_by_created_at("2012-03-27 14:53:59 UTC")
+    assert_equal "2012-03-27 14:53:59 UTC", @merchant_repo.find_by_created_at("2012-03-27 14:53:59 UTC").created_at
   end
 
   def test_it_returns_a_find_by_updated_at_match
-    assert_equal "2012-03-27 14:53:59 UTC", @merchant_repo.find_by_updated_at("2012-03-27 14:53:59 UTC")
+    assert_equal "2012-03-27 14:53:59 UTC", @merchant_repo.find_by_updated_at("2012-03-27 14:53:59 UTC").updated_at
   end
 
   # find_all_by_id

@@ -1,8 +1,8 @@
 # require_relative 'merchant'
 
 class MerchantParser
-  def make_merchants(merchant_file_to_read)
-    contents = CSV.open(merchant_file_to_read, headers: true, header_converters: :symbol)
+  def make_merchant(file)
+    contents = CSV.open(file, headers: true, header_converters: :symbol)
     parse_file(contents)
   end
 
