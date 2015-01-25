@@ -11,7 +11,7 @@ class ItemRepositoryTest < Minitest::Test
   end
 
   def test_the_file_to_read_exists
-    assert File.exist?(@item_repo.file_to_read)
+    assert File.exist?(@item_repo.file)
   end
 
   def test_it_returns_all_instances

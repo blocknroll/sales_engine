@@ -2,12 +2,12 @@
 
 class ItemRepository
 
-  attr_reader :file_to_read, :all
+  attr_reader :file, :all
 
-  def initialize(file_to_read)
-    @file_to_read = file_to_read
+  def initialize(file)
+    @file = file
     @item_parser = ItemParser.new
-    @all = @item_parser.make_items(@file_to_read)
+    @all = @item_parser.make_items(@file)
   end
 
   def random
