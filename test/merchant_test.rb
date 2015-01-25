@@ -2,6 +2,8 @@ require_relative 'test_helper'
 
 
 class MerchantTest < Minitest::Test
+  # To do: remove instance variables.
+  
   # def test_it_stores_an_id
   #   merchant = Merchant.new({:id => 6}, nil)
   #   assert_equal 6, merchant.id

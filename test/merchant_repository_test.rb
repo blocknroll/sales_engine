@@ -1,6 +1,7 @@
 require_relative 'test_helper'
 
 class MerchantRepositoryTest < Minitest::Test
+# To do: remove instance variables.
 
   def setup
     @merchant_repo = MerchantRepository.new("test/fixtures/merchants_fixtures.csv")
