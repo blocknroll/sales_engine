@@ -1,3 +1,5 @@
+# require_relative 'merchant_parser'
+
 class MerchantRepository
 
   attr_reader :file, :all
@@ -5,7 +7,7 @@ class MerchantRepository
   def initialize(file)
     @file = file
     @merchant_parser = MerchantParser.new
-    @all = @merchant_parser.make_merchant(@file)
+    @all = @merchant_parser.make_merchant(file)
   end
 
   def random
