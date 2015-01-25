@@ -1,14 +1,17 @@
+# require_relative 'merchant'
+
 class MerchantParser
-  # attr_reader :filename
-  #
-  # def initialize(input_filename)
-  #   @filename = input_filename
-  # end
-  #
-  # def parse
-  #   file = CSV.open(filename, :headers => true, :header_converters => :symbol)
-  #   file.map do |line|
-  #     Merchant.new(line, nil)
-  #   end
-  # end
+  def make_merchant(file)
+    contents = CSV.open(file, headers: true, header_converters: :symbol)
+    parse_file(contents)
+  end
+
+  def parse_file(contents)
+    contents.map { |row| Merchant.new(
+      row[:id],
+      row[:name],
+      row[:created_at],
+      row[:updated_at]
+      ) }
+    end
 end
