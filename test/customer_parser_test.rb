@@ -1,4 +1,5 @@
 require_relative 'test_helper'
+# To do: remove instance variables.
 
 class CustomerParserTest < MiniTest::Test
 

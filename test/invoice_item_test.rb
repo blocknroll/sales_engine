@@ -1,6 +1,7 @@
 require_relative 'test_helper'
 
 class InvoiceItemTest < Minitest::Test 
+# To do: remove instance variables.
 
   def setup
     @invoice_item = InvoiceItem.new(1, 539, 1, 5, 13635)

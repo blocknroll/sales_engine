@@ -1,6 +1,7 @@
 require_relative 'test_helper'
 
 class TransactionRepositoryTest < Minitest::Test 
+  # To do: remove instance variables.
   
   def setup
     @transaction_repo = TransactionRepository.new("test/fixtures/transactions_fixtures.csv")

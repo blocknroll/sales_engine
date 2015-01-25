@@ -1,7 +1,8 @@
 require_relative 'test_helper'
-
+# To do: remove instance variables.
 
 class CustomerTest < MiniTest::Test
+# To do: remove instance variables.
 
   def setup
     @customer = Customer.new(1, "Joey", "Ondricka", "2012-03-27", "2012-03-27")

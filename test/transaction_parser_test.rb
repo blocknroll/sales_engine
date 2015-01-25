@@ -1,6 +1,7 @@
 require_relative 'test_helper'
 
 class TransactionParserTest < Minitest::Test
+# To do: remove instance variables.
 
   def setup 
     @transaction_parser = TransactionParser.new

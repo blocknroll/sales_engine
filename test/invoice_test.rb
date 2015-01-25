@@ -1,9 +1,11 @@
 require_relative 'test_helper'
 
 class InvoiceTest < Minitest::Test
+# To do: remove instance variables.
 
   def setup
-    data = {:id => 1,
+    data = {
+      :id => 1,
       :customer_id => 1,
       :merchant_id => 26,
       :status => "shipped"

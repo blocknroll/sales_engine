@@ -1,6 +1,7 @@
 require_relative 'test_helper'
 
 class InvoiceRepositoryTest < Minitest::Test
+# To do: remove instance variables.
 
   def setup
     @invoice_repo = InvoiceRepository.new('test/fixtures/invoices_fixtures.csv')

@@ -1,5 +1,5 @@
 require_relative 'test_helper'
-
+# To do: remove instance variables.
 
 class CustomerRepositoryTest < Minitest::Test
   #the purpose of the customer repo is to hold customers. it needs to talk to the parser, who creates the customers, and receive them into the repo.

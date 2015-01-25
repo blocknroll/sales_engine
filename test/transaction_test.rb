@@ -1,6 +1,7 @@
 require_relative 'test_helper'
 
 class TransactionTest < Minitest::Test
+# To do: remove instance variables.
 
   def setup
     id = 1
