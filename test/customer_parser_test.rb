@@ -15,7 +15,7 @@ attr_reader :customer_parser
   def test_it_can_read_a_csv_file
     last_row_name = "Ramona"
     customer_file = "test/fixtures/customers_fixtures.csv"
-    assert_equal last_row_name, customer_parser.make_customers(customer_file).last.first_name
+    assert_equal last_row_name, customer_parser.make_customers(file).last.first_name
   end
 
 end
