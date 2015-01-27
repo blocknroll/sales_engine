@@ -1,22 +1,22 @@
-require_relative 'item'
+# require_relative 'item'
 
 class ItemParser
 
-  def make_items(item_file_to_read)
-    contents = CSV.open(item_file_to_read, headers: true, header_converters: :symbol)
-    parse_file(contents)
+  def make_items(file)
+    contents = CSV.open(file, headers: true, header_converters: :symbol)
+    parse(contents)
   end
 
-  def parse_file(contents)
-    contents.map { |row| Item.new(
-      row[:id],
-      row[:name],
-      row[:description],
-      row[:unit_price],
-      row[:merchant_id],
-      row[:created_at],
-      row[:updated_at]
-      ) }
+  def parse(contents)
+    contents.map { |row| Item.new({
+      :id           => row[:id],
+      :name         => row[:name],
+      :description  => row[:description],
+      :unit_price   => row[:unit_price],
+      :merchant_id  => row[:merchant_id],
+      :created_at   => row[:created_at],
+      :updated_at   => row[:updated_at]
+      }) }
     end
 
   end
