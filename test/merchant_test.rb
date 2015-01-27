@@ -1,58 +1,56 @@
 require_relative 'test_helper'
 
-
 class MerchantTest < Minitest::Test
-  # To do: remove instance variables.
-  
-  # def test_it_stores_an_id
-  #   merchant = Merchant.new({:id => 6}, nil)
-  #   assert_equal 6, merchant.id
-  # end
-  #
-  # def test_it_stores_ids_as_integers_only
-  #   merchant = Merchant.new({:id => '6'}, nil)
-  #   assert_equal 6, merchant.id
-  # end
-  #
-  # def test_it_stores_a_name
-  #   merchant = Merchant.new({:name => 'John'}, nil)
-  #   assert_equal "John", merchant.name
-  # end
+
+  attr_reader :merchant
+
+  def setup
+    data = {
+      :id         => 1,
+      :name       => "Schroeder-Jerde",
+      :created_at => "2012-03-27 14:53:59 UTC",
+      :updated_at => "2012-03-27 14:53:59 UTC"
+    }
+    @merchant = Merchant.new(data)
+  end
+
+  def test_it_exists
+    assert merchant
+  end
+
+  def test_it_has_an_id
+    assert_equal 1, merchant.id
+  end
+
+  def test_it_has_a_name
+    assert_equal "Schroeder-Jerde", merchant.name
+  end
+
+  def test_it_has_a_created_at_timestamp
+    assert_equal "2012-03-27 14:53:59 UTC", merchant.created_at
+  end
+
+  def test_it_has_an_updated_at_timestamp
+    assert_equal "2012-03-27 14:53:59 UTC", merchant.updated_at
+  end
+
 end
 
-# class FakeMerchantRepository
-#   attr_accessor :invoices
+
+
+# # Jeff's example tests - with nil
 #
-#   def find_invoices_by_merchant_id(id)
-#     @invoices
-#   end
+# def test_it_stores_an_id
+#   merchant = Merchant.new({:id => 6}, nil)
+#   assert_equal 6, merchant.id
 # end
 #
-# class MerchantIntegrationTest < Minitest::Test
-#   def test_it_finds_related_orders
-#     @merchant_repo = FakeMerchantRepository.new
-#     data = {:name => "My Shop"}
-#     @merchant = Merchant.new(data, @merchant_repo)
-#
-#     invoices = Array.new(5){ Invoice.new }
-#     @merchant_repo.invoices = invoices
-#
-#     assert_equal invoices, @merchant.invoices
-#   end
+# def test_it_stores_ids_as_integers_only
+#   merchant = Merchant.new({:id => '6'}, nil)
+#   assert_equal 6, merchant.id
 # end
 #
-# class MerchantParserTest < Minitest::Test
-#   def test_it_parses_a_csv_of_data
-#     filename = "test/support/sample_merchants.csv"
-#     parser = MerchantParser.new(filename)
-#     merchants = parser.parse
-#
-#     first = merchants.first
-#     assert_equal 1, first.id
-#     assert_equal "Schroeder-Jerde", first.name
-#
-#     second = merchants[1]
-#     assert_equal 2, second.id
-#     assert_equal "Klein, Rempel and Jones", second.name
-#   end
+# def test_it_stores_a_name
+#   merchant = Merchant.new({:name => 'John'}, nil)
+#   assert_equal "John", merchant.name
 # end
