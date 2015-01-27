@@ -15,7 +15,7 @@ class MerchantParserTest < MiniTest::Test
   def test_it_can_read_a_csv_file
     last_row_name = "Williamson Group"
     file = "test/fixtures/merchants_fixtures.csv"
-    assert_equal last_row_name, merchant_parser.make_merchant(file).last.name
+    assert_equal "Williamson Group", merchant_parser.make_merchant(file).last.name
   end
 
 end

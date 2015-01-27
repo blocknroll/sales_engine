@@ -30,3 +30,6 @@ Random test:
 - probably you will have 10 in there, very likely you'll have 9,
     but it is almost certain that you will have more than 1.
 - So that is how you can test if it is returning a random instance.
+
+
+SPEC HARNESS
