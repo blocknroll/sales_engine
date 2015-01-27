@@ -1,16 +1,30 @@
 class Customer
-  attr_reader :id, :first_name, :last_name, :created_at, :updated_at
+  attr_reader :id, :first_name, :last_name, :created_at, :updated_at, :parent
 
-  def initialize(data)
+  def initialize(data, parent=nil)
     @id         = data[:id]
     @first_name = data[:first_name]
     @last_name  = data[:last_name]
     @created_at = data[:created_at]
     @updated_at = data[:updated_at]
+    @parent     = parent
   end
 
   def full_name
     "#{first_name} #{last_name}"
+  end
+
+  def invoices
+    sales_engine.startup
+    sales_engine.invoice_repository.find_all_by_customer_id(id)
+  end
+
+  def customer_repo
+    parent
+  end
+
+  def sales_engine
+    customer_repo.parent
   end
 
 end

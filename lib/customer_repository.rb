@@ -2,12 +2,13 @@ require_relative 'customer_parser'
 
 class CustomerRepository
 
-  attr_reader :file, :all
+  attr_reader :file, :all, :parent
 
-  def initialize(file)
+  def initialize(file, parent)
     @file = file
     @customer_parser = CustomerParser.new
-    @all = @customer_parser.make_customers(@file)
+    @all = @customer_parser.make_customers(@file, self)
+    @parent = parent
   end
 
   def random

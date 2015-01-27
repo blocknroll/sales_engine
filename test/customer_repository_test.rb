@@ -5,7 +5,7 @@ class CustomerRepositoryTest < Minitest::Test
 attr_reader :customer_repo
 
 def setup
-    @customer_repo = CustomerRepository.new("test/fixtures/customers_fixtures.csv")
+    @customer_repo = CustomerRepository.new("test/fixtures/customers_fixtures.csv", SalesEngine.new)
   end
 
   def test_it_exists
@@ -62,6 +62,15 @@ def setup
 
   def test_it_returns_zero_when_no_find_all_by_last_name_match_exists
     assert_equal 0, customer_repo.find_all_by_last_name("ndricka").count
+  end
+
+  def test_it_has_a_parent
+    assert customer_repo.parent.is_a? SalesEngine
+  end
+
+  def test_a_customer_can_find_its_invoices
+    customer = customer_repo.find_by_id("1")
+    assert_equal 5, customer.invoices.count
   end
 
 end
