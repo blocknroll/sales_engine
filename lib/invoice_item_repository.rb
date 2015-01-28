@@ -1,11 +1,14 @@
+require_relative 'invoice_item_parser'
+
 class InvoiceItemRepository
 
-  attr_reader :all
+  attr_reader :file, :all, :sales_engine
 
-  def initialize(file)
+  def initialize(file, sales_engine)
     @file = file
     @invoice_item_parser = InvoiceItemParser.new
-    @all = @invoice_item_parser.make_invoice_item(file)
+    @all = @invoice_item_parser.make_invoice_item(file, sales_engine)
+    @sales_engine = sales_engine
   end
 
   def random

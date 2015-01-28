@@ -5,7 +5,7 @@ class CustomerRepositoryTest < Minitest::Test
 attr_reader :customer_repo
 
 def setup
-    @customer_repo = CustomerRepository.new("test/fixtures/customers_fixtures.csv", SalesEngine.new)
+    @customer_repo = CustomerRepository.new("test/fixtures/customers_fixtures.csv", self)
   end
 
   def test_it_exists
@@ -65,7 +65,7 @@ def setup
   end
 
   def test_it_has_a_parent
-    assert customer_repo.parent.is_a? SalesEngine
+    assert customer_repo.sales_engine.is_a? SalesEngine
   end
 
   def test_a_customer_can_find_its_invoices

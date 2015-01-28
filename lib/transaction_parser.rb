@@ -1,15 +1,14 @@
-require 'csv'
 require_relative 'transaction'
 
 class TransactionParser
 
-  def make_transaction(file)
+  def make_transaction(file, sales_engine=nil)
     contents = CSV.open(file, headers: true, header_converters: :symbol)
-    parse(contents)
+    parse(contents, sales_engine)
   end
   
   private
-  def parse(contents)
+  def parse(contents, sales_engine=nil)
     contents.map { |row| Transaction.new({
       :id             => row[:id],
       :invoice_id     => row[:invoice_id],
@@ -18,7 +17,7 @@ class TransactionParser
       :result         => row[:result],
       :created_at     => row[:created_at],
       :updated_at     => row[:updated_at]
-      } ) }
+      }, sales_engine ) }
   end
 
 end

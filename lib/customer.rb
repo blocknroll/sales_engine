@@ -4,23 +4,19 @@ class Customer
               :last_name,  
               :created_at, 
               :updated_at, 
-              :parent
+              :customer_repo
 
-  def initialize(data, parent=nil)
-    @id         = data[:id]
-    @first_name = data[:first_name]
-    @last_name  = data[:last_name]
-    @created_at = data[:created_at]
-    @updated_at = data[:updated_at]
-    @parent     = parent
+  def initialize(data, customer_repo=nil)
+    @id             = data[:id]
+    @first_name     = data[:first_name]
+    @last_name      = data[:last_name]
+    @created_at     = data[:created_at]
+    @updated_at     = data[:updated_at]
+    @customer_repo  = customer_repo
   end
 
   def full_name
     "#{first_name} #{last_name}"
-  end
-
-  def customer_repo
-    parent
   end
 
   def sales_engine

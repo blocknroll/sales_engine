@@ -12,7 +12,7 @@ class CustomerTest < MiniTest::Test
       :created_at   => "2012-03-27", 
       :updated_at   => "2012-03-27"
     }
-    @customer = Customer.new(data)
+    @customer = Customer.new(data, self)
   end
 
   def test_it_exists
@@ -31,7 +31,7 @@ class CustomerTest < MiniTest::Test
       :created_at => "2012-03-27", 
       :updated_at => "2012-03-27"
     }
-    customer = Customer.new(data)
+    customer = Customer.new(data, self)
     assert_equal "Timmy", customer.first_name
   end
 
