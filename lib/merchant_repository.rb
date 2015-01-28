@@ -4,11 +4,11 @@ class MerchantRepository
 
   attr_reader :file, :all, :parent_se
 
-  def initialize(file, parent)
+  def initialize(file, sales_engine)
     @file = file
+    @sales_engine = sales_engine
     @merchant_parser = MerchantParser.new
     @all = @merchant_parser.make_merchant(file, self)
-    @parent_se = parent
   end
 
   def random
