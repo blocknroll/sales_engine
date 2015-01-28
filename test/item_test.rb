@@ -14,7 +14,7 @@ class ItemTest < Minitest::Test
       :created_at   => "2012-03-27 14:53:59 UTC",
       :updated_at   => "2012-03-27 14:53:59 UTC"
     }
-    @item = Item.new(data)
+    @item = Item.new(data, self)
   end
 
   def test_it_exists

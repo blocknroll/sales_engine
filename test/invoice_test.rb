@@ -11,7 +11,7 @@ class InvoiceTest < Minitest::Test
       :merchant_id => 26,
       :status => "shipped"
      }
-    @invoice = Invoice.new(data)
+    @invoice = Invoice.new(data, self)
   end
 
   def test_it_exists
