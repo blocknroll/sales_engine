@@ -7,7 +7,7 @@ class CustomerRepository
   def initialize(file, sales_engine)
     @file = file
     @customer_parser = CustomerParser.new
-    @all = @customer_parser.make_customers(@file, self)
+    @all = @customer_parser.make_customer(@file, self)
     @sales_engine = sales_engine
   end
 

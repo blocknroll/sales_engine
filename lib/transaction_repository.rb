@@ -2,12 +2,13 @@ require_relative 'transaction_parser'
 
 class TransactionRepository
 
-  attr_reader :file, :all
+  attr_reader :file, :all, :sales_engine
 
-  def initialize(file)
+  def initialize(file, sales_engine)
     @file = file
     @transaction_parser = TransactionParser.new
     @all = @transaction_parser.make_transaction(file)
+    @sales_engine = sales_engine
   end
 
   def random

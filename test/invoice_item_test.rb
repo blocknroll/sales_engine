@@ -12,7 +12,7 @@ class InvoiceItemTest < Minitest::Test
       :quantity   => 5,
       :unit_price => 13635
       }
-    @invoice_item = InvoiceItem.new(data)
+    @invoice_item = InvoiceItem.new(data, self)
   end
 
   def test_it_exits
