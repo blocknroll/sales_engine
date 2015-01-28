@@ -2,12 +2,14 @@
 
 class ItemParser
 
-  def make_items(file)
+  def make_item(file, sales_engine=nil)
     contents = CSV.open(file, headers: true, header_converters: :symbol)
-    parse(contents)
+    parse(contents, sales_engine)
   end
 
-  def parse(contents)
+  private
+
+  def parse(contents, sales_engine=nil)
     contents.map { |row| Item.new({
       :id           => row[:id],
       :name         => row[:name],
@@ -16,7 +18,7 @@ class ItemParser
       :merchant_id  => row[:merchant_id],
       :created_at   => row[:created_at],
       :updated_at   => row[:updated_at]
-      }) }
+      }, sales_engine ) }
     end
 
   end

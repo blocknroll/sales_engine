@@ -2,12 +2,13 @@ require_relative 'invoice_parser'
 
 class InvoiceRepository
 
-  attr_reader :file, :all
+  attr_reader :file, :all, :sales_engine
 
-  def initialize(file)
+  def initialize(file, sales_engine)
     @file = file
     @invoice_parser = InvoiceParser.new
-    @all = @invoice_parser.make_invoices(file)
+    @all = @invoice_parser.make_invoice(file, sales_engine)
+    @sales_engine = sales_engine
   end
 
   def random
@@ -36,7 +37,7 @@ class InvoiceRepository
 
   def find_all_by_customer_id(customer_id)
     matches = all.select { |e| e.customer_id == customer_id }
-    matches.nil? ? [] : matches 
+    matches.nil? ? [] : matches
   end
 
   def find_all_by_merchant_id(merchant_id)

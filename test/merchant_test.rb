@@ -11,7 +11,7 @@ class MerchantTest < Minitest::Test
       :created_at => "2012-03-27 14:53:59 UTC",
       :updated_at => "2012-03-27 14:53:59 UTC"
     }
-    @merchant = Merchant.new(data)
+    @merchant = Merchant.new(data, self)
   end
 
   def test_it_exists

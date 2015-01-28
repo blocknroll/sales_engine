@@ -2,10 +2,11 @@ require_relative 'test_helper'
 
 class ItemRepositoryTest < Minitest::Test
 
-  attr_reader :item_repo
+  attr_reader :item_repo, :sales_engine
 
   def setup
-    @item_repo = ItemRepository.new("test/fixtures/items_fixtures.csv")
+    @item_repo = ItemRepository.new("test/fixtures/items_fixtures.csv", self)
+    @sales_engine = SalesEngine.new
   end
 
   def test_it_exists
