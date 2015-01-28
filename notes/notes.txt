@@ -1,3 +1,5 @@
+http://tutorials.jumpstartlab.com/projects/sales_engine.html
+
 
 customer_repo:
 # all returns all instances
@@ -14,8 +16,12 @@ reject
 reduce
 
 
-reference_to_me = self
+reference_to_X (X is current location) = self
   then pass reference_to_me as argument when creating new instances
+
+
+https://github.com/mikedao/sales_engine
+
 
 
 Hey Mr MerchantRepository, what is your merchant_list?

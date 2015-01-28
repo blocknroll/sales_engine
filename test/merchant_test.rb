@@ -34,6 +34,12 @@ class MerchantTest < Minitest::Test
     assert_equal "2012-03-27 14:53:59 UTC", merchant.updated_at
   end
 
+
+
+  # def test_it_can_find_items_by_id
+  #   assert_equal "", merchant.items
+  # end
+
 end
 
 

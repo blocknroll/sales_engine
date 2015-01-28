@@ -2,10 +2,11 @@ require_relative 'test_helper'
 
 class MerchantRepositoryTest < Minitest::Test
 
-  attr_reader :merchant_repo
+  attr_reader :merchant_repo, :engine
 
   def setup
-    @merchant_repo = MerchantRepository.new("test/fixtures/merchants_fixtures.csv")
+    @merchant_repo = MerchantRepository.new("test/fixtures/merchants_fixtures.csv", self)
+    @engine = SalesEngine.new
   end
 
   def test_it_exists
@@ -113,6 +114,13 @@ class MerchantRepositoryTest < Minitest::Test
   def test_it_returns_zero_when_no_find_all_by_updated_at_match_exists
     assert_equal 0, merchant_repo.find_all_by_updated_at("1999").count
     assert_equal 0, merchant_repo.find_all_by_updated_at(" ").count
+  end
+
+  # RELATIONSHIPS
+
+  def test_it_can_find_items_using_id
+    assert_equal 15, engine.find_items_using_merchant(1)
+    # assert_equal  9, engine.find_items_using_merchant(5)
   end
 
 end
