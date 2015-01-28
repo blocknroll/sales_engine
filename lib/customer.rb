@@ -1,5 +1,10 @@
 class Customer
-  attr_reader :id, :first_name, :last_name, :created_at, :updated_at, :parent
+  attr_reader :id, 
+              :first_name, 
+              :last_name,  
+              :created_at, 
+              :updated_at, 
+              :parent
 
   def initialize(data, parent=nil)
     @id         = data[:id]
@@ -14,11 +19,6 @@ class Customer
     "#{first_name} #{last_name}"
   end
 
-  def invoices
-    sales_engine.startup
-    sales_engine.invoice_repository.find_all_by_customer_id(id)
-  end
-
   def customer_repo
     parent
   end
@@ -26,5 +26,12 @@ class Customer
   def sales_engine
     customer_repo.parent
   end
+
+  def invoices
+    sales_engine.startup
+    sales_engine.invoice_repository.find_all_by_customer_id(id)
+  end
+
+
 
 end
