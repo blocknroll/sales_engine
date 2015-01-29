@@ -54,4 +54,17 @@ class InvoiceRepository
     sales_engine.find_transactions_by_id(id)
   end
 
+  def find_items_by_invoice_id(id)
+    sales_engine.find_items_by_invoice_id(id)
+  #go to invoice_items and find all by item id
+  end
+
+  def find_by_customer_id(id)
+    sales_engine.find_by_customer_id(id)
+  end
+
+  def find_by_merchant_id(id)
+    sales_engine.find_by_merchant_id(id)
+  end
+
 end

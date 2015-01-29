@@ -12,9 +12,12 @@ class SalesEngine
               :item_repository,
               :invoice_item_repository,
               :customer_repository,
-              :transaction_repository
+              :transaction_repository,
+              :filepath
 
-  def initialize
+
+  def initialize(filepath=nil)
+    @filepath          = filepath
     @merchant_file     = 'test/fixtures/merchants_fixtures.csv'
     @invoice_file      = 'test/fixtures/invoices_fixtures.csv'
     @item_file         = 'test/fixtures/items_fixtures.csv'
@@ -43,6 +46,28 @@ class SalesEngine
 
   def find_invoice_items_by_invoice_id
     invoice_item_repository.find_all_by_invoice_id(id)
+  end
+
+  def find_items_by(id)
+    sales_engine.find_items_by_merchant_id(id)
+  end #fred
+
+  def find_invoices_by(id)
+    sales_engine.find_invoices_by_merchant_id(id)
+  end #fred
+
+  def find_items_by_invoice_id(id)
+    items = invoice_item_repository.find_all_by_invoice_id(id) 
+    items.map { |e| item_repository.find_by_id(e.item_id)}
+    item_repository.find_by_id(invoice_item.item_id)
+  end
+
+  def find_by_customer_id(id)
+    customer_repository.find_by_id(id)
+  end
+
+  def find_by_merchant_id(id)
+    merchant_repository.find_by_id(id)
   end
 
   # sales_engine = SalesEngine.new(nil)

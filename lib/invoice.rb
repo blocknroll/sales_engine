@@ -27,14 +27,15 @@ class Invoice
   end
 
   def items
-    invoice_repository.
-    #go to invoice_items and find all by item id
+    invoice_repository.find_items_by_invoice_id(id)
   end
 
-  # def customer
-  # end
+  def customer
+    invoice_repository.find_by_customer_id(customer_id)
+  end
 
-  # def merchant
-  # end
+  def merchant
+    invoice_repository.find_by_merchant_id(merchant_id)
+  end
 
 end
