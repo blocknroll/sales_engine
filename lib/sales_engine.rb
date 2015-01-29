@@ -70,6 +70,11 @@ class SalesEngine
     merchant_repository.find_by_id(id)
   end
 
+  def find_invoice(id)
+    invoice_repository.find_by_id(id)
+  end
+
+
   # sales_engine = SalesEngine.new(nil)
   # sales_engine.startup
 
