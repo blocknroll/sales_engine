@@ -2,10 +2,10 @@ require_relative 'test_helper'
 
 class MerchantTest < Minitest::Test
 
-  attr_reader :merchant
+  attr_reader :merchant, :data
 
   def setup
-    data = {
+    @data = {
       :id         => 1,
       :name       => "Schroeder-Jerde",
       :created_at => "2012-03-27 14:53:59 UTC",
@@ -34,13 +34,26 @@ class MerchantTest < Minitest::Test
     assert_equal "2012-03-27 14:53:59 UTC", merchant.updated_at
   end
 
+  def test_it_can_find_items
+    merchant_repo = Minitest::Mock.new
+    merchant = Merchant.new(data, merchant_repo)
+    merchant_repo.expect(:find_items_by, nil, [1])
+    merchant.items
+    merchant_repo.verify
+  end
 
-
-  # def test_it_can_find_items_by_id
-  #   assert_equal "", merchant.items
-  # end
+  def test_it_can_find_invoices
+    merchant_repo = Minitest::Mock.new
+    merchant = Merchant.new(data, merchant_repo)
+    merchant_repo.expect(:find_invoices_by, nil, [1])
+    merchant.invoices
+    merchant_repo.verify
+  end
 
 end
+
+
+
 
 
 

@@ -13,8 +13,12 @@ class Merchant
     @merchant_repo  = merchant_repo
   end
 
-  # def items
-  #   parent_mr.find_items_using(id)
-  # end
+  def items
+    merchant_repo.find_items_by(id)
+  end
+
+  def invoices
+    merchant_repo.find_invoices_by(id)
+  end
 
 end

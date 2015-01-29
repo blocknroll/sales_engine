@@ -2,10 +2,10 @@ require_relative 'test_helper'
 
 class ItemTest < Minitest::Test
 
-  attr_reader :item
+  attr_reader :item, :data
 
   def setup
-    data = {
+    @data = {
       :id           => 1,
       :name         => "Item Qui Esse",
       :description  => "Nihil autem sit odio inventore deleniti. Est laudantium ratione distinctio laborum. Minus voluptatem nesciunt assumenda dicta voluptatum porro.",
@@ -47,6 +47,22 @@ class ItemTest < Minitest::Test
 
   def test_it_has_an_updated_at_timestamp
     assert_equal "2012-03-27 14:53:59 UTC", item.updated_at
+  end
+
+  def test_it_can_find_invoice_items_by_item_id
+    item_repo = Minitest::Mock.new
+    item = Item.new(data, item_repo)
+    item_repo.expect(:find_invoice_items_by_item_id, nil, [1])
+    item.invoice_items
+    item_repo.verify
+  end
+
+  def test_it_can_find_merchant_by_merchant_id
+    item_repo = Minitest::Mock.new
+    item = Item.new(data, item_repo)
+    item_repo.expect(:find_merchant_by_merchant_id, nil, [1])
+    item.merchant
+    item_repo.verify
   end
 
 end
