@@ -50,4 +50,8 @@ class InvoiceRepository
     matches.nil? ? [] : matches
   end
 
+  def find_transactions_by_invoice_id
+    sales_engine.find_transactions_by_id(id)
+  end
+
 end

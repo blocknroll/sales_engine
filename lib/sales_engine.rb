@@ -32,4 +32,20 @@ class SalesEngine
     @transaction_repository   = TransactionRepository.new(@transaction_file, self)
   end
 
+
+  def find_invoices_by_customer_id(id)
+    item_repository.find_all_by_id(id)
+  end
+
+  def find_transactions_by_invoice_id(id)
+    transaction_repository.find_all_by_invoice_id(id)
+  end
+
+  def find_invoice_items_by_invoice_id
+    invoice_item_repository.find_all_by_invoice_id(id)
+  end
+
+  # sales_engine = SalesEngine.new(nil)
+  # sales_engine.startup
+
 end

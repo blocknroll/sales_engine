@@ -2,10 +2,10 @@ require_relative 'test_helper'
 
 class InvoiceTest < Minitest::Test
 
-  attr_reader :invoice
+  attr_reader :invoice, :data
 
   def setup
-    data = {
+    @data = {
       :id => 1,
       :customer_id => 1,
       :merchant_id => 26,
@@ -32,6 +32,14 @@ class InvoiceTest < Minitest::Test
 
   def test_it_has_a_status
     assert_equal "shipped", invoice.status
+  end
+
+  def test_it_is_connected_to_invoice_repository
+    invoice_repository = Minitest::Mock.new
+    invoice = Invoice.new(data, invoice_repository)
+    invoice_repository.expect(:find_transactions_by_invoice_id, nil, [1])
+    invoice.transactions
+    invoice_repository.verify
   end
 
 end

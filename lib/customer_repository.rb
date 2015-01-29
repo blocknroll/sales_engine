@@ -40,4 +40,8 @@ class CustomerRepository
     matches.nil? ? [] : matches
   end
 
+  def find_invoices_by_id(id)
+    sales_engine.find_invoices_by_customer_id(id)
+  end
+
 end
