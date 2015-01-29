@@ -50,11 +50,11 @@ class SalesEngine
 
   def find_items_by(id)
     sales_engine.find_items_by_merchant_id(id)
-  end #fred
+  end
 
   def find_invoices_by(id)
     sales_engine.find_invoices_by_merchant_id(id)
-  end #fred
+  end
 
   def find_items_by_invoice_id(id)
     items = invoice_item_repository.find_all_by_invoice_id(id) 
@@ -73,6 +73,14 @@ class SalesEngine
   def find_invoice(id)
     invoice_repository.find_by_id(id)
   end
+
+  def find_invoice_items_by_item_id(id)
+    invoice_item_repository.find_by_id(id)
+  end
+
+  def find_merchant_by_merchant_id(id)
+    merchant_repository.find_by_id(id)
+  end
 
 
   # sales_engine = SalesEngine.new(nil)

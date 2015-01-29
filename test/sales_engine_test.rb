@@ -50,7 +50,9 @@ class SalesEngineTest < Minitest::Test
 
   # RELATIONSHIPS
 
-
+  def method_name
+    
+  end
 
 
 
