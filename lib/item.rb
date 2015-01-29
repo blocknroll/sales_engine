@@ -18,4 +18,8 @@ class Item
     @updated_at   = data[:updated_at]
     @item_repo    = item_repo
   end
+
+  def invoice_items
+    item_repo.find_invoice_items_by(id)
+  end
 end

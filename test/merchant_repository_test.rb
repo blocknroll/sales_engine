@@ -136,6 +136,4 @@ class MerchantRepositoryTest < Minitest::Test
     sales_engine.verify
   end
 
-
-
 end
