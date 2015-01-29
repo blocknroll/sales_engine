@@ -128,4 +128,14 @@ class MerchantRepositoryTest < Minitest::Test
     sales_engine.verify
   end
 
+  def test_it_calls_sales_engine_to_find_invoices_by_merchant_id
+    sales_engine = Minitest::Mock.new
+    merchant_repository = MerchantRepository.new(data, sales_engine)
+    sales_engine.expect(:find_invoices_by_merchant_id, nil, [1])
+    merchant_repository.find_invoices_by(1)
+    sales_engine.verify
+  end
+
+
+
 end
