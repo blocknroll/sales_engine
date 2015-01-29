@@ -20,6 +20,10 @@ class Item
   end
 
   def invoice_items
-    item_repo.find_invoice_items_by(id)
+    item_repo.find_invoice_items_by_item_id(id)
+  end
+
+  def merchant
+    item_repo.find_merchant_by_merchant_id(id)
   end
 end

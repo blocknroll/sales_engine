@@ -49,13 +49,19 @@ class ItemTest < Minitest::Test
     assert_equal "2012-03-27 14:53:59 UTC", item.updated_at
   end
 
-  # invoice_items returns a collection of InvoiceItems
-  # associated with this object
-  def test_it_can_return_a_collection_of_invoice_items
+  def test_it_can_find_invoice_items_by_item_id
     item_repo = Minitest::Mock.new
     item = Item.new(data, item_repo)
-    item_repo.expect(:find_invoice_items_by, nil, [1])
+    item_repo.expect(:find_invoice_items_by_item_id, nil, [1])
     item.invoice_items
+    item_repo.verify
+  end
+
+  def test_it_can_find_merchant_by_merchant_id
+    item_repo = Minitest::Mock.new
+    item = Item.new(data, item_repo)
+    item_repo.expect(:find_merchant_by_merchant_id, nil, [1])
+    item.merchant
     item_repo.verify
   end
 
