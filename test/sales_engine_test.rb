@@ -9,6 +9,15 @@ class SalesEngineTest < Minitest::Test
     engine.startup
   end
 
+  def test_startup_initializes_repos
+    assert engine.customer_repository
+    assert engine.invoice_repository
+    assert engine.invoice_item_repository
+    assert engine.item_repository
+    assert engine.merchant_repository
+    assert engine.transaction_repository
+  end
+
   def test_it_has_a_merchant_repo_method
     assert engine.merchant_repository.is_a? MerchantRepository
   end
@@ -41,11 +50,18 @@ class SalesEngineTest < Minitest::Test
 
   # RELATIONSHIPS
 
-  def test_it_can_find_items_using_id
-    assert_equal 15, engine.find_items_using_merchant("1")
-  end
 
 
+
+
+
+
+
+
+
+  # def test_it_can_find_items_using_id
+  #   assert_equal 15, engine.find_items_using_merchant("1")
+  # end
 
 # engine = SalesEngine.new
 # engine.startup

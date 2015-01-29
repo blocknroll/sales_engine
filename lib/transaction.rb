@@ -20,4 +20,8 @@ class Transaction
     @transaction_repo = transaction_repo
   end
 
+  def invoice
+    transaction_repo.find_invoice(invoice_id)
+  end
+
 end

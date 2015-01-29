@@ -2,10 +2,10 @@ require_relative 'test_helper'
 
 class CustomerTest < MiniTest::Test
 
-  attr_reader :customer
+  attr_reader :customer, :data
 
   def setup
-    data = {
+    @data = {
       :id           => 1, 
       :first_name   => "Joey", 
       :last_name    => "Ondricka", 
@@ -42,5 +42,14 @@ class CustomerTest < MiniTest::Test
   def test_it_has_an_id
     assert_equal 1, customer.id
   end
+
+  def test_invoices_calls_customer_repository
+    customer_repository = Minitest::Mock.new
+    customer = Customer.new(data, customer_repository)
+    customer_repository.expect(:find_invoices_by_id, nil, [1])
+    customer.invoices
+    customer_repository.verify
+  end
+
 
 end
