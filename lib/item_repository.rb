@@ -91,4 +91,8 @@ class ItemRepository
     sales_engine.find_invoice_items_by_item_id(id)
   end
 
+  def find_merchant_by_merchant_id(id)
+    sales_engine.find_merchant_by_merchant_id(id)
+  end
+
 end
