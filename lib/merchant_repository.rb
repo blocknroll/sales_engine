@@ -4,7 +4,7 @@ class MerchantRepository
 
   attr_reader :file, :all, :sales_engine
 
-  def initialize(file, sales_engine)
+  def initialize(file=nil, sales_engine)
     @file = file
     @merchant_parser = MerchantParser.new
     @all = @merchant_parser.make_merchant(file, self)
@@ -59,10 +59,8 @@ class MerchantRepository
 
   # RELATIONSHIPS
 
-  # def find_items_using(id)
-  #   parent_se.find_items_using_merchant(id)
-  # end
-
-
+  def find_items_by(id)
+    sales_engine.find_items_by_merchant_id(id)
+  end
 
 end
