@@ -87,4 +87,8 @@ class ItemRepository
     matches.nil? ? [] : matches
   end
 
+  def find_invoice_items_by_item_id(id)
+    sales_engine.find_invoice_items_by_item_id(id)
+  end
+
 end
